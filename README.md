@@ -1,8 +1,6 @@
-# Library Management System
+# Library Management Application
 
-## Introduction
-
-The Library Management System is an application for managing a library,
+The Library Management Application is an application for managing a library,
 allowing for the storage of information about books and customers and enabling the borrowing and returning of books.
 Additionally, each customer has loan history with dates of borrowing and returning books.
 The application is built with Java using Spring Boot and MongoDB as the database.
