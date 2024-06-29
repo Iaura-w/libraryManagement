@@ -53,13 +53,11 @@ db.customers.insertMany([
     {
         firstName: "John",
         lastName: "Doe",
-        borrowedBooks: [],
         loanHistory: []
     },
     {
         firstName: "Alice",
         lastName: "Smith",
-        borrowedBooks: [],
         loanHistory: []
     }
 ]);
