@@ -5,15 +5,19 @@ import org.project.librarymanagement.customer.dto.CustomerResponseDto;
 import org.project.librarymanagement.loan.LoanDto;
 import org.project.librarymanagement.loan.LoanMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerMapper {
 
     public static CustomerResponseDto mapFromCustomerToCustomerResponseDto(Customer customer) {
-        List<LoanDto> loanDtos = customer.loanHistory()
-                .stream()
-                .map(LoanMapper::mapFromLoanToLoanDto)
-                .toList();
+        List<LoanDto> loanDtos = new ArrayList<>();
+        if (customer.loanHistory() != null) {
+            loanDtos = customer.loanHistory()
+                    .stream()
+                    .map(LoanMapper::mapFromLoanToLoanDto)
+                    .toList();
+        }
 
         return CustomerResponseDto.builder()
                 .id(customer.id())
@@ -28,6 +32,7 @@ public class CustomerMapper {
         return Customer.builder()
                 .firstName(customerRequestDto.firstName())
                 .lastName(customerRequestDto.lastName())
+                .loanHistory(new ArrayList<>())
                 .build();
     }
 }
