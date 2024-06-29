@@ -1,17 +1,21 @@
 package org.project.librarymanagement.book;
 
+import lombok.Builder;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+@Builder
 @Document("books")
 public record Book(
         @Id String id,
         @Field("author") String author,
         @Field("title") String title,
-        @Field("available") boolean available
+        @Field("isbn") @Indexed(unique = true) String isbn,
+        @Field("available") boolean isAvailable
 ) {
-    public Book(String title, String author) {
-        this(null, title, author, true);
+    public Book(String title, String author, String isbn) {
+        this(null, title, author, isbn, true);
     }
 }
