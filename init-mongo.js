@@ -23,29 +23,25 @@ db.books.insertMany([
         title: "Hamlet",
         author: "William Shakespeare",
         available: true,
-        isbn: 12345,
-        loanHistory: []
+        isbn: "12345"
     },
     {
         title: "War and Peace",
         author: "Leo Tolstoy",
         available: true,
-        isbn: 24251,
-        loanHistory: []
+        isbn: "24251"
     },
     {
         title: "The Odyssey",
         author: "Homer",
         available: true,
-        isbn: 33441,
-        loanHistory: []
+        isbn: "33441"
     },
     {
         title: "1984",
         author: "George Orwell",
         available: true,
-        isbn: 67564,
-        loanHistory: []
+        isbn: "67564"
     }
 ]);
 
