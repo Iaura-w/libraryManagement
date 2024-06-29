@@ -1,4 +1,4 @@
-package org.project.librarymanagement.book;
+package org.project.librarymanagement.book.error;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String bookId) {

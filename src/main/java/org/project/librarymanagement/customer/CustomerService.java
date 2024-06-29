@@ -3,6 +3,9 @@ package org.project.librarymanagement.customer;
 import lombok.AllArgsConstructor;
 import org.project.librarymanagement.customer.dto.CustomerRequestDto;
 import org.project.librarymanagement.customer.dto.CustomerResponseDto;
+import org.project.librarymanagement.customer.error.CustomerCannotBeDeletedException;
+import org.project.librarymanagement.customer.error.CustomerNotFoundException;
+import org.project.librarymanagement.loan.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
+    private final LoanRepository loanRepository;
 
     public List<CustomerResponseDto> getAllCustomers() {
         return customerRepository.findAll()
@@ -31,6 +35,9 @@ public class CustomerService {
     }
 
     public void deleteCustomer(String id) {
+        if (loanRepository.existsByCustomerId(id)) {
+            throw new CustomerCannotBeDeletedException(id);
+        }
         customerRepository.deleteById(id);
     }
 

@@ -1,4 +1,4 @@
-package org.project.librarymanagement.customer;
+package org.project.librarymanagement.customer.error;
 
 public class CustomerNotFoundException extends RuntimeException {
     public CustomerNotFoundException(String customerId) {

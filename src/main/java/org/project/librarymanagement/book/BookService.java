@@ -3,6 +3,9 @@ package org.project.librarymanagement.book;
 import lombok.AllArgsConstructor;
 import org.project.librarymanagement.book.dto.BookRequestDto;
 import org.project.librarymanagement.book.dto.BookResponseDto;
+import org.project.librarymanagement.book.error.BookCannotBeDeletedException;
+import org.project.librarymanagement.book.error.BookNotFoundException;
+import org.project.librarymanagement.loan.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
+    private final LoanRepository loanRepository;
 
     public List<BookResponseDto> getAllBooks() {
         return bookRepository.findAll()
@@ -32,6 +36,9 @@ public class BookService {
     }
 
     public void deleteBook(String id) {
+        if (loanRepository.existsByBookId(id)) {
+            throw new BookCannotBeDeletedException(id);
+        }
         bookRepository.deleteById(id);
     }
 

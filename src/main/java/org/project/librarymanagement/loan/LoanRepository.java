@@ -10,4 +10,8 @@ import java.util.Optional;
 @Repository
 public interface LoanRepository extends MongoRepository<Loan, String> {
     Optional<Loan> findByBookAndCustomerAndReturnDateIsNull(Book book, Customer customer);
+
+    boolean existsByBookId(String bookId);
+
+    boolean existsByCustomerId(String customerId);
 }
