@@ -63,4 +63,11 @@ public class BookService {
         Book save = bookRepository.save(update);
         return BookMapper.mapFromBookToBookResponseDto(save);
     }
+
+    public Book changeBookAvailability(String id, boolean isAvailable) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new BookNotFoundException(id));
+        Book update = new Book(book, isAvailable);
+        return bookRepository.save(update);
+    }
 }

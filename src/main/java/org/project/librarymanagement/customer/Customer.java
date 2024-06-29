@@ -16,7 +16,7 @@ public record Customer(
         @Id String id,
         @Field("firstName") String firstName,
         @Field("lastName") String lastName,
-        @DBRef List<Loan> loanHistory
+        @DBRef(lazy = true) List<Loan> loanHistory
 ) {
     public Customer(String firstName, String lastName) {
         this(null, firstName, lastName, new ArrayList<>());

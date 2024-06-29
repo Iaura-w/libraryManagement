@@ -15,7 +15,11 @@ public record Book(
         @Field("isbn") @Indexed(unique = true) String isbn,
         @Field("available") boolean isAvailable
 ) {
-    public Book(String title, String author, String isbn) {
-        this(null, title, author, isbn, true);
+    public Book(String author, String title, String isbn) {
+        this(null, author, title, isbn, true);
+    }
+
+    public Book(Book book, boolean isAvailable) {
+        this(book.id, book.author, book.title, book.isbn, isAvailable);
     }
 }

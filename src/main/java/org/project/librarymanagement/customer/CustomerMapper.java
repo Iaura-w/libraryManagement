@@ -2,15 +2,24 @@ package org.project.librarymanagement.customer;
 
 import org.project.librarymanagement.customer.dto.CustomerRequestDto;
 import org.project.librarymanagement.customer.dto.CustomerResponseDto;
+import org.project.librarymanagement.loan.LoanDto;
+import org.project.librarymanagement.loan.LoanMapper;
+
+import java.util.List;
 
 public class CustomerMapper {
 
     public static CustomerResponseDto mapFromCustomerToCustomerResponseDto(Customer customer) {
+        List<LoanDto> loanDtos = customer.loanHistory()
+                .stream()
+                .map(LoanMapper::mapFromLoanToLoanDto)
+                .toList();
+
         return CustomerResponseDto.builder()
                 .id(customer.id())
                 .firstName(customer.firstName())
                 .lastName(customer.lastName())
-                .loanHistory(customer.loanHistory())
+                .loanHistory(loanDtos)
                 .build();
 
     }
