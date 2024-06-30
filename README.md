@@ -20,8 +20,10 @@ table.
 
 - Run the Docker Compose with database MongoDB: `docker-compose up`
 - Run the application
-- The application should be available at http://localhost:8080 and connected to the MongoDB instance running in the
+- The application should be available at: http://localhost:8080 and connected to the MongoDB instance running in the
   Docker container
+- After running the application, Swagger UI is available to test API endpoints
+  at: http://localhost:8080/swagger-ui/index.html
 
 ## Endpoints
 
