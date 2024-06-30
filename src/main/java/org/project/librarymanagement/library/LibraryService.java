@@ -3,8 +3,6 @@ package org.project.librarymanagement.library;
 import lombok.AllArgsConstructor;
 import org.project.librarymanagement.book.Book;
 import org.project.librarymanagement.book.BookRepository;
-import org.project.librarymanagement.book.BookService;
-import org.project.librarymanagement.book.dto.BookResponseDto;
 import org.project.librarymanagement.customer.Customer;
 import org.project.librarymanagement.customer.CustomerRepository;
 import org.project.librarymanagement.loan.Loan;
@@ -17,14 +15,13 @@ import java.time.LocalDateTime;
 @Service
 @AllArgsConstructor
 public class LibraryService {
-    private final BookService bookService;
     private final CustomerRepository customerRepository;
     private final BookRepository bookRepository;
     private final LoanRepository loanRepository;
 
     @Transactional
     public BorrowStatus borrowBook(String bookId, String customerId) {
-        BookResponseDto book = bookService.getBookById(bookId);
+        Book book = bookRepository.findById(bookId).orElse(null);
         Customer customer = customerRepository.findById(customerId).orElse(null);
         if (book == null) {
             return BorrowStatus.BOOK_NOT_FOUND;
@@ -36,7 +33,8 @@ public class LibraryService {
             return BorrowStatus.BOOK_NOT_AVAILABLE;
         }
 
-        Book updatedBook = bookService.changeBookAvailability(bookId, false);
+        Book updatedBook = new Book(book, false);
+        bookRepository.save(updatedBook);
 
         Loan loan = new Loan(updatedBook, customer, LocalDateTime.now());
         Loan savedLoan = loanRepository.save(loan);
@@ -65,7 +63,9 @@ public class LibraryService {
             return ReturnStatus.CUSTOMER_DID_NOT_BORROW_THIS_BOOK;
         }
 
-        bookService.changeBookAvailability(bookId, true);
+        Book updatedBookAvailability = new Book(book, true);
+        bookRepository.save(updatedBookAvailability);
+
         Loan updatedLoan = new Loan(loan.id(), loan.book(), loan.customer(), loan.borrowDate(), LocalDateTime.now());
 
         loanRepository.save(updatedLoan);
