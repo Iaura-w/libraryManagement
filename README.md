@@ -58,3 +58,6 @@ table.
 ## Example server response for endpoint GET /customers
 <img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/4c42b1c9-325e-4063-a579-e71bf05a099b" height=650>
 
+## Example server response for endpoint GET /books
+<img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/14e6de04-2e93-4733-999d-f6ef171d7c4b" height=650>
+
