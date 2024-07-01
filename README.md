@@ -35,6 +35,8 @@ table.
 - Update book: PUT /books/{id}
 - Delete book (only if not on loans table): DELETE /books/{id}
 
+  <img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/f6c996a6-cbeb-4b9e-b280-4a1c69d4b198" width=800>
+
 ### Customers
 
 - Find all customers: GET /customers
@@ -43,7 +45,16 @@ table.
 - Update customer: PUT /customers/{id}
 - Delete customers (only if not on loans table): DELETE /customers/{id}
 
+  <img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/000cfba9-7cca-4c0b-87ab-7698fdf5db0f" width=800>
+
+
 ### Library
 
 - Borrow book by customer: POST /library/borrow/{bookId}/customer/{customerId}
 - Return book by customer: POST /library/return/{bookId}/customer/{customerId}
+
+  <img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/0002e0aa-b118-45d3-8864-612db826cf31" width=800>
+
+## Example server response for endpoint GET /customers
+<img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/4c42b1c9-325e-4063-a579-e71bf05a099b">
+
