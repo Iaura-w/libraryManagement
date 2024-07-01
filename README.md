@@ -56,5 +56,5 @@ table.
   <img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/0002e0aa-b118-45d3-8864-612db826cf31" width=800>
 
 ## Example server response for endpoint GET /customers
-<img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/4c42b1c9-325e-4063-a579-e71bf05a099b">
+<img src="https://github.com/Iaura-w/libraryManagement/assets/26602440/4c42b1c9-325e-4063-a579-e71bf05a099b" height=650>
 
